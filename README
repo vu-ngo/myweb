@@ -7,3 +7,14 @@ To display
 - Node
 - Namespace
 - IP
+
+# Usage:
+
+Start the Docker container:
+$ docker build -t myweb:latest .
+$ docker run -p 8080:8080 myweb:latest
+goto http://localhost:8080
+
+Run local
+$ docker-compose up -d 
+goto http://localhost

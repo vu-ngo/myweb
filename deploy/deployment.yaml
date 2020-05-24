@@ -23,6 +23,3 @@ spec:
           name: myweb 
           ports:
             - containerPort: 8080 
-          command:
-            - yarm
-            - serve

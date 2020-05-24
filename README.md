@@ -13,11 +13,21 @@ URL: http://abce17b32dc0a4c87aae09881491396e-1821988714.us-west-2.elb.amazonaws.
 - Namespace
 - IP
 
+### Onetime setup
+```
+Goto https://docs.aws.amazon.com/eks/latest/userguide/eks-ug.pdf#getting-started
+- install aws cli, kubectl, eksctl
+Create EKS cluster:
+$ cd deploy
+$ ./create-eks-cluster.sh <cluster name> [us-west-2] [t3.small] [3 nodes]
+
+```
+
 ### Build / Test
 ```
 $ docker build -t myweb:latest .
 $ docker run -p 8080:8080 myweb:latest
-goto http://localhost:8080
+Goto http://localhost:8080
 ```
 
 ### Test 

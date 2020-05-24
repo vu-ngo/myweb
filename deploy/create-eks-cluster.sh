@@ -2,7 +2,7 @@
 
 if test -z "$1"
 then
-   echo "Usage: $0 <cluster name> [us-west-1] [t3.small] [3 nodes]"
+   echo "Usage: $0 <cluster name> [us-west-2] [t3.small] [3 nodes]"
    exit 4
 fi
 

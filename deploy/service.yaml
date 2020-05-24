@@ -8,11 +8,18 @@ metadata:
     app.kubernetes.io/component: backend
     app.kubernetes.io/managed-by: kubectl
   name: myweb 
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy: "ELBSecurityPolicy-TLS-1-2-2017-01"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
 spec:
   selector:
     app: myweb 
   type: LoadBalancer
   ports:
-   -  protocol: TCP
-      port: 80
-      targetPort: 8080
+  - name: http
+    port: 80
+    targetPort: 8080
+  - name: https
+    port: 443
+    targetPort: 8080

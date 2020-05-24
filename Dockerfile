@@ -1,5 +1,4 @@
 # This Dockerfile is for one of the interview assignments 
-#FROM php:7.4.5-fpm-alpine3.11
 FROM alpine:3.11
 
 # Install packages
@@ -10,7 +9,6 @@ RUN apk --no-cache add php7 php7-fpm php7-opcache php7-mysqli php7-json php7-ope
 # Configure nginx
 COPY ./config/nginx.conf /etc/nginx/nginx.conf
 RUN rm /etc/nginx/conf.d/default.conf
-#COPY ./config/site.conf /etc/nginx/conf.d/default.conf
 
 # Configure PHP-FPM
 COPY ./config/fpm-pool.conf /etc/php7/php-fpm.d/www.conf
@@ -43,7 +41,4 @@ CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
 # Configure a healthcheck to validate that everything is up&running
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping
-
-# 'nginx -g daemon off" will run as default command when any container is run that uses the image that was built using this Dockerfile"
-#CMD ["nginx", "-g", "daemon off;"]
 

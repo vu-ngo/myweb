@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: myweb
+    app.kubernetes.io/instance: myweb-instance
+    app.kubernetes.io/version: '1.0.0'
+    app.kubernetes.io/managed-by: kubectl
+  name: myweb-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myweb 
+  template:
+    metadata:
+      labels:
+        app: myweb 
+    spec:
+      containers:
+        - image: 713663648196.dkr.ecr.us-west-2.amazonaws.com/myweb:latest 
+          imagePullPolicy: Always
+          name: myweb 
+          ports:
+            - containerPort: 8080 
+          command:
+            - yarm
+            - serve

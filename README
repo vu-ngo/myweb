@@ -1,0 +1,9 @@
+# my web server
+using nginx
+runing in AWS EKS
+
+To display
+- Pod
+- Node
+- Namespace
+- IP

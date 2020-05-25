@@ -23,13 +23,16 @@
         </style>
 </head>
 <body>
+<?php
+      $podinfo = parse_ini_file('/etc/podinfo.txt');
+?>
         <h1>Kubernetes Infrastructure</h1>
 	<table>
                 <tr class="h"><th>Name</th><th>Node/Pod</th><th>Container</th></tr>
-		<tr><td class="e">Pod:</td><td class="v"><?php echo getenv("POD_NAME"); ?></td><td class="v"><?php echo getenv("HOSTNAME"); ?></td></tr>
-		<tr><td class="e">Node:</td><td class="v"><?php echo getenv("NODE_NAME"); ?></td><td class="v"><?php echo getenv("MYWEB_SERVICE_HOST"); ?></td></tr>
-		<tr><td class="e">Namespace:</td><td class="v"><?php echo getenv("POD_NAMESPACE"); ?></td><td class="v">default</td></tr>
-		<tr><td class="e">IP:</td><td class="v"><?php echo getenv("POD_IP"); ?></td><td class="v"><?php echo getenv("KUBERNETES_SERVICE_HOST"); ?></td></tr>
+		<tr><td class="e">Pod:</td><td class="v"><?php echo getenv("HOSTNAME"); ?></td><td class="v"><?php echo getenv("HOSTNAME"); ?></td></tr>
+		<tr><td class="e">Node:</td><td class="v"><?php echo $podinfo["NODE_NAME"]; ?></td><td class="v"><?php echo getenv("MYWEB_SERVICE_HOST"); ?></td></tr>
+		<tr><td class="e">Namespace:</td><td class="v"><?php echo $podinfo["POD_NAMESPACE"]; ?></td><td class="v">default</td></tr>
+		<tr><td class="e">IP:</td><td class="v"><?php echo $podinfo["POD_IP"]; ?></td><td class="v"><?php echo getenv("KUBERNETES_SERVICE_HOST"); ?></td></tr>
 	</table>
         <a href="/phpinfo.php" target="_blank"><h2>PHP Information</h2></a>
 </body>
